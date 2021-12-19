@@ -1,0 +1,306 @@
+body {
+    background-image: url('/images/bg.jpg');
+}
+
+#maincontainer {
+    padding: 0;
+}
+
+/* ============================================== header ================================================ */
+.navbar {
+    background-color: #343434;
+    border-bottom: 4px #29c4ac solid;
+    box-shadow: 0 0 9px 0 rgba(73, 15, 118, 1); 
+    padding: 5px 0; 
+}
+
+/* navbar toggle */
+.navbar-default .navbar-toggle {
+    background-color: transparent;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #0ba0a0;
+}
+.navbar-default .navbar-toggle:hover {
+    background-color: transparent;
+}
+.navbar-default .navbar-toggle:hover .icon-bar {
+    background-color: #0ba0a0;
+}
+
+/* navbar brand */
+.navbar-default .navbar-brand {
+    color: #c6c6c6;
+
+    /* transition */
+    transition: all 0.9s ease 0s;
+    -moz-transition: all 0.9s ease 0s;
+    -webkit-transition: all 0.9s ease 0s;
+    -o-transition: all 0.9s ease 0s; 
+    /* transition */
+}
+.navbar-default .navbar-brand:hover {
+    color:#0badad;
+}
+
+/* navbar menu */
+#main_menu ul li a {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    color: #666;
+    font-size: 15px;
+    
+    /* transition */
+    transition: all 0.9s ease 0s;
+    -moz-transition: all 0.9s ease 0s;
+    -webkit-transition: all 0.9s ease 0s;
+    -o-transition: all 0.9s ease 0s; 
+    /* transition */
+}
+#main_menu ul li a:hover {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    color: #128e80;
+    font-size: 15px;
+    background-color: transparent;
+} 
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+    color: #555;
+    background-color: transparent;
+}
+.navbar-nav > li > .dropdown-menu {
+    margin-top: 8px;
+    background-color: #343434;
+    border-left: 2px #29c4ac solid;
+    border-right: 2px #29c4ac solid;
+    border-bottom: 2px #29c4ac solid;
+    border-top: none;
+    width:200px; 
+}
+/* ============================================== /header ================================================ */
+
+/*image container */
+.containter-images {  
+    padding: 10px; 
+}
+
+/*image container when hover */
+.containter-images:hover .middle{
+    opacity: 1;
+}
+
+/*images display images */
+.images {
+    border: 2px solid #ffffff; 
+    padding: 0; 
+    width: 400px; /* Set a small width */
+    height: 250px;
+    cursor: pointer;
+    transition: 0.8s;
+}
+/* Add a hover effect (blue shadow) */
+.images:hover {
+    box-shadow: 0 0 2px 1px #1db290;
+    opacity: 0.5; 
+}
+
+/* album panel body */
+.albumPanel {
+    padding: 0;
+}
+
+.panel-footer {
+    padding: 10px 10px;
+    background-color: #f5f5f5;
+    border: none;
+}
+
+/* album thumbnail */
+.thumbnail {
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 0;
+    padding: 0; 
+    width: 400px; /* Set a small width */
+    height: 250px;
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: 0.8s;
+}
+
+/* album thumbnail when hover */
+.thumbnail:hover {
+    box-shadow: 0 0 2px 1px #1db290;
+    opacity: 0.5; 
+}
+
+/* Home page */
+#topbar {
+    margin: 5px 0 5px 0;
+}
+
+/* singleImage */
+.singleImage img {
+    margin: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+#imageDetailsContainer{
+    border-bottom: 1px solid #9a9a9a;
+    text-align: center;
+    padding: 10px 0px;
+    margin: 10px 5px 32px 5px;
+}
+
+.glyphicon-chevron-left{
+    font-size: 32px;
+    color: #7e7e7e;
+    
+    /* transition */
+    transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s; 
+    /* transition */
+}
+.glyphicon-chevron-right{
+    font-size: 32px;
+    color: #7e7e7e;
+    
+    /* transition */
+    transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s; 
+    /* transition */
+}
+.glyphicon-chevron-left:hover{
+    font-size: 32px;
+    color: #137c95;
+}
+.glyphicon-chevron-right:hover{
+    font-size: 32px;
+    color: #137c95;
+}
+.totalViews {
+    font-size: 15px;
+    color: #484848;
+    padding: 5px 5px; 
+}
+
+.user {
+    font-size: 14px;
+    color: #163a3b;
+}
+.user a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #2f707e;
+}
+.user a:hover {
+    text-decoration: none;
+    font-size: 14px;
+    color: #0d4b67;
+}
+
+/* ============================================== footer ================================================ */
+#footer {
+    width: 90%; /*to hide scrollbar of bottom*/
+    padding: 5px 0; 
+    margin-top:50px; 
+    font-size: 14px;
+    color: #4a4a4a;
+    text-align: center;
+} 
+/* ============================================== /footer ================================================ */
+
+/* Select album to display images and controller is a containner of Edit and Delete button */
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+}
+
+.containter {
+    padding: 0 10px;
+}
+
+.containter:hover .middle {
+    opacity: 1;
+}
+
+.text {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+}
+
+
+/* Upload image */
+.panel-heading {
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold; 
+}
+
+
+/* ================================================== Dashboard ==================================================== */
+/*Page : dashboard.blade.php*/
+.proTitle {
+    text-align: left;
+    font-family: Tahoma, Arial, sans-serif; 
+    font-size: 20px;
+    color: #125e86;
+    font-weight: bold;
+    border: 1px solid #085f79; 
+    padding: 5px 0 5px 10px;
+    background-color: #a1f0ed; 
+    text-transform: uppercase; 
+    margin: 0 0 10px 0;
+}
+
+.proPic {
+    border: 1px solid black;
+    width: 150px;
+    height: 150px;
+    margin: 0 0 10px 0;
+}
+
+.proInfoLeft {
+    text-align: right;
+    font-family: 'Arial';
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    width: 42%;
+}
+.proInfoRight {
+    text-align: left;
+    font-family: 'Arial';
+    font-size: 15px;
+    color: black;
+    margin: 0 0 10px 0;
+    width: 58%;
+}
+
+.proBtnEdit {
+    text-align: center; 
+}
+
+/* ============================================== /End of Dashboard ================================================ */
+
+
+
+
+
+
+
