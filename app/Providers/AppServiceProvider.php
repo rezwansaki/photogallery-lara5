@@ -15,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //Bug Fix for Laravel5.4 and Laravel5.5 
-        Schema::defaultStringLength(191);  
+        Schema::defaultStringLength(191);
+        if ($this->app->environment('production')) {
+            \URL::forceScheme('https');
+        }
     }
 
     /**
