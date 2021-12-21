@@ -27,32 +27,33 @@ class PhotoGallary extends Controller
     //index function for welcome page 
     public function index()  //this is for '/' root route which run at the first 
     {
-        try {
+        return 'ok';
+        // try {
 
-            $this->showNotifyFromSettings(); //check if information is not correct 
+        //     $this->showNotifyFromSettings(); //check if information is not correct 
 
-            if ($this->totalImageToDisplay == '') {
-                $this->totalImageToDisplay = 20;
-            }
+        //     if ($this->totalImageToDisplay == '') {
+        //         $this->totalImageToDisplay = 20;
+        //     }
 
-            $settings = Setting::all()->first();
+        //     $settings = Setting::all()->first();
 
-            if ($settings == '') //if query is empty  
-            {
-                $this->setDataForSettings();  //to set default data in settings table 
-                $this->totalImageToDisplay = 20; //if settins table is empty then default value for the displaying image 
-                $albums = Album::all();
-                $imgs = Image::orderBy('id', 'DESC')->paginate($this->totalImageToDisplay);
-                return view('welcome')->with('imgs', $imgs)->with('albums', $albums);
-            } else {
-                $this->totalImageToDisplay = $settings->total_images_to_display; //totalImageToDisplay value get value from database when settings table is not empty 
-                $albums = Album::all();
-                $imgs = Image::orderBy('id', 'DESC')->paginate($this->totalImageToDisplay);
-                return view('welcome')->with('imgs', $imgs)->with('albums', $albums);
-            }
-        } catch (\Exception $e) {
-            return Redirect('/')->with('messagefail', $e->getMessage());  //for the developer to details report 
-        }
+        //     if ($settings == '') //if query is empty  
+        //     {
+        //         $this->setDataForSettings();  //to set default data in settings table 
+        //         $this->totalImageToDisplay = 20; //if settins table is empty then default value for the displaying image 
+        //         $albums = Album::all();
+        //         $imgs = Image::orderBy('id', 'DESC')->paginate($this->totalImageToDisplay);
+        //         return view('welcome')->with('imgs', $imgs)->with('albums', $albums);
+        //     } else {
+        //         $this->totalImageToDisplay = $settings->total_images_to_display; //totalImageToDisplay value get value from database when settings table is not empty 
+        //         $albums = Album::all();
+        //         $imgs = Image::orderBy('id', 'DESC')->paginate($this->totalImageToDisplay);
+        //         return view('welcome')->with('imgs', $imgs)->with('albums', $albums);
+        //     }
+        // } catch (\Exception $e) {
+        //     return Redirect('/')->with('messagefail', $e->getMessage());  //for the developer to details report 
+        // }
     }
 
 
