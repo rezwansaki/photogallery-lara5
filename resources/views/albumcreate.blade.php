@@ -22,13 +22,18 @@
                     @endif
                 </div>
             </div>
-            
+
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard - Create Album</div>
 
                 <div class="panel-body">
-                    <form onsubmit="fileValidation(); return false;" id="myForm" action="/album/store" enctype="multipart/form-data"  method="post">
-                       {{ csrf_field() }}
+                    @foreach($errors as $error)
+                    <div class="alert alert-danger alert-dismissable fade in">
+                        {{ $error }}
+                    </div>
+                    @endforeach
+                    <form id="myForm" action="/album/store" enctype="multipart/form-data" method="post">
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <label for="album_name">Album Name (without any space or any special character within 20 characters)</label>
                             <input type="text" class="form-control" id="album_name" name="album_name">

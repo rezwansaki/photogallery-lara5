@@ -5,65 +5,66 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><h2>Dashboard</h2>
+                <div class="panel-heading">
+                    <h2>Dashboard</h2>
                     @if(Session::has('message'))
                     <div class="alert alert-success alert-dismissable fade in">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         {{ Session::get('message') }}
                     </div>
                     @endif
-                    
+
                     @if(Session::has('messagefail'))
                     <div class="alert alert-success alert-dismissable fade in">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         {{ Session::get('messagefail') }}
                     </div>
-                    @endif   
+                    @endif
                 </div>
 
 
                 <div class="panel-body">
                     @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
                     @endif
-                    
+
                     <!-- Left Side -->
                     <div class="col-md-4">
-                      
+
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <form action="/admin/showSettings" method="get">
                                     <center>
                                         <button style="margin-left:10px;" class="btn btn-primary">
-                                            Settings 
+                                            Settings
                                         </button>
                                     </center>
-                                </form> 
+                                </form>
                                 <br>
-                                <p class="alert alert-danger">If you are the first time in here, please change the settings first. Otherwise, 'Reset Password' system will not work.</p>  
+                                <p class="alert alert-danger">If you are the first time in here, please change the settings first. Otherwise, 'Reset Password' system will not work.</p>
                             </li>
                         </ul>
 
-                       
+
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <form action="/admin/deleteallimages" method="post" class="destroyImage">
                                     <input type="hidden" name="_method" value="delete">
                                     {{ csrf_field() }}
                                     <center>
-                                       <button style="margin-left:10px;" class="btn btn-danger" onclick="return confirm('Please be careful!! It removes all uploaded images. Are you sure?')">
-                                        Delete All Images
+                                        <button style="margin-left:10px;" class="btn btn-danger" onclick="return confirm('Please be careful!! It removes all uploaded images. Are you sure?')">
+                                            Delete All Images
                                         </button>
                                     </center>
-                                </form> 
+                                </form>
                                 <br>
-                                <p class="alert alert-danger">Please be careful! It removes all uploaded images from albums and also delete data from database of them. It doesn't remove user information and albums.</p>  
+                                <p class="alert alert-danger">Please be careful! It removes all uploaded images from albums and also delete data from database of them. It doesn't remove user information and albums.</p>
                             </li>
                         </ul>
 
-                        
+
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <form action="/admin/reset" method="post" class="reset">
@@ -74,15 +75,15 @@
                                             Reset
                                         </button>
                                     </center>
-                                </form> 
+                                </form>
                                 <br>
-                                <p class="alert alert-danger">Please be careful! It removes everything which are created by admin. It removes all uploaded images, all albums, data from database and also removes users with their images. It will be a fresh gallary to use new one.</p>  
+                                <p class="alert alert-danger">Please be careful! It removes everything which are created by admin. It removes all uploaded images, all albums, data from database and also removes users with their images. It will be a fresh gallary to use new one.</p>
                             </li>
                         </ul>
                     </div>
                     <!-- End Of Left Side -->
-                    
-                    
+
+
                     <!-- Right Side -->
                     <div class="col-md-8 col-xs-8">
                         <!-- Profile -->
@@ -92,12 +93,16 @@
                                 <div class="row">
                                     <div class="col-md-4 col-xs-4"></div>
                                     <div class="col-md-4 col-xs-4">
-                                        <img class="media-object proPic" src="/upload/users/{{Auth::user()->name}}.jpg" alt="{{Auth::user()->name}}.jpg">
+                                        @if(file_exists( public_path().'/upload/users/'.Auth::user()->name.'.jpg' ))
+                                        <img class="media-object proPic" src="/upload/users/{{Auth::user()->name}}.jpg" alt="">
+                                        @else
+                                        <img class="media-object proPic" src="images/imagenotfound.jpg" alt="Image Not Found!">
+                                        @endif
                                     </div>
                                     <div class="col-md-4 col-xs-4"></div>
                                 </div>
                             </div>
-                            <!-- Profile Information --> 
+                            <!-- Profile Information -->
                             <div class="col-md-12 col-xs-12">
                                 <div class="row">
                                     <div class="col-md-12 col-xs-12">
@@ -122,7 +127,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End of Profile Information --> 
+                            <!-- End of Profile Information -->
                         </div>
                         <!-- End of Profile -->
                     </div>

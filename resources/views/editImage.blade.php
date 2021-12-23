@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-           
+
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     @if(Session::has('message'))
@@ -23,19 +23,19 @@
                     @endif
                 </div>
             </div>
-            
-            
+
+
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard - Edit Image</div>
-                
+
                 <div class="panel-body">
-                    
-                    <img class="images img-responsive" src="/storage/upload/images/{{$imgEdit->name}}" alt="{{$imgEdit->name}}">
-                    
+
+                    <img class="images img-responsive" src="/upload/images/{{$imgEdit->name}}" alt="{{$imgEdit->name}}">
+
                     <br>
-                    
-                    <form onsubmit="fileValidation(); return false;" id="myForm" action="{{action('PhotoGallary@update',$imgEdit->id)}}" enctype="multipart/form-data"  method="post">
-                       {{ csrf_field() }}
+
+                    <form id="myForm" action="{{action('PhotoGallary@update',$imgEdit->id)}}" enctype="multipart/form-data" method="post">
+                        {{ csrf_field() }}
                         <div class="form-group hidden-lg hidden-md hidden-sm hidden-xs">
                             <label for="image_name">Image Name</label>
                             <input type="text" class="form-control" id="image_name" name="image_name" value="{{ $imgEdit->name }}">
@@ -61,7 +61,7 @@
                                     <option>{{ $album->name }}</option>
                                     @endforeach
                                 </select>
-                            </div> 
+                            </div>
                         </div>
                         <div class="form-group hidden-lg hidden-md hidden-sm hidden-xs">
                             <label for="size">Uploaded Date</label>

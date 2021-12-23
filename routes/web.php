@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +13,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/demo', 'TestController@index');
+
 Route::get('/', 'PhotoGallary@index'); // '/' means root. first run this route. 
 
 Auth::routes();

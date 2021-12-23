@@ -22,13 +22,13 @@
                     @endif
                 </div>
             </div>
-            
+
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard - Edit Album</div>
 
                 <div class="panel-body">
-                    <form onsubmit="fileValidation(); return false;" id="myForm" action="/album/update/{{$imgEdit->id}}" enctype="multipart/form-data"  method="post">
-                       {{ csrf_field() }}
+                    <form id="myForm" action="/album/update/{{$imgEdit->id}}" enctype="multipart/form-data" method="post">
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <label for="album_name">Album Name</label>
                             <input type="text" class="form-control" id="album_name" name="album_name" value="{{$imgEdit->name}}">

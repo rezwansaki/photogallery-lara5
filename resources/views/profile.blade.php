@@ -5,14 +5,21 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><h4>Edit Profile</h4></div>
+                <div class="panel-heading">
+                    <h4>Edit Profile</h4>
+                </div>
                 <div class="panel-body">
                     <p>
                         Your User ID is: <b>{{ Auth::user()->id }}</b> </br>
                         (Never try to change your user id.)
                     </p>
                     </br>
-                    <form onsubmit="fileValidation(); return false;" id="myForm" action="{{action('PhotoGallary@updateProfile')}}" enctype="multipart/form-data"  method="post">
+                    @foreach($errors as $error)
+                    <div class="alert alert-danger alert-dismissable fade in">
+                        {{ $error }}
+                    </div>
+                    @endforeach
+                    <form id="myForm" action="{{ url('/updateProfile')}}" enctype="multipart/form-data" method="post">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="display_name">Name (without any space)</label>
@@ -35,10 +42,10 @@
                     <div class="alert alert-success alert-dismissable fade in">
                         <p>
                             'Name' must be without space. But if you use space, it will not problem. File name of profile image will be created as like user name, so that try to put user name without any space. 'Email' must be verified, because this email will be used to reset your password.
-                            During submit, some times a message may be displayed, when you change your user name but don't change any character. For example, you change from 'rezwansaki' to 'RezwanSaki'. 
+                            During submit, some times a message may be displayed, when you change your user name but don't change any character. For example, you change from 'rezwansaki' to 'RezwanSaki'.
                         </p>
                     </div>
-                    
+
                     @if(Session::has('message'))
                     <div class="alert alert-danger alert-dismissable fade in">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
