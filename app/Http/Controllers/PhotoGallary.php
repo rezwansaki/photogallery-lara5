@@ -33,31 +33,26 @@ class PhotoGallary extends Controller
     //index function for welcome page 
     public function index()  //this is for '/' root route which run at the first 
     {
-        try {
+        $this->showNotifyFromSettings(); //check if information is not correct 
 
-            $this->showNotifyFromSettings(); //check if information is not correct 
+        if ($this->totalImageToDisplay == '') {
+            $this->totalImageToDisplay = 20;
+        }
 
-            if ($this->totalImageToDisplay == '') {
-                $this->totalImageToDisplay = 20;
-            }
+        $settings = Setting::all()->first();
 
-            $settings = Setting::all()->first();
-
-            if ($settings == '') //if query is empty  
-            {
-                $this->setDataForSettings();  //to set default data in settings table 
-                $this->totalImageToDisplay = 20; //if settins table is empty then default value for the displaying image 
-                $albums = Album::all();
-                $imgs = Image::orderBy('id', 'DESC')->paginate($this->totalImageToDisplay);
-                return view('welcome')->with('imgs', $imgs)->with('albums', $albums);
-            } else {
-                $this->totalImageToDisplay = $settings->total_images_to_display; //totalImageToDisplay value get value from database when settings table is not empty 
-                $albums = Album::all();
-                $imgs = Image::orderBy('id', 'DESC')->paginate($this->totalImageToDisplay);
-                return view('welcome')->with('imgs', $imgs)->with('albums', $albums);
-            }
-        } catch (\Exception $e) {
-            return Redirect('/')->with('messagefail', $e->getMessage());  //for the developer to details report 
+        if ($settings == '') //if query is empty  
+        {
+            $this->setDataForSettings();  //to set default data in settings table 
+            $this->totalImageToDisplay = 20; //if settins table is empty then default value for the displaying image 
+            $albums = Album::all();
+            $imgs = Image::orderBy('id', 'DESC')->paginate($this->totalImageToDisplay);
+            return view('welcome')->with('imgs', $imgs)->with('albums', $albums);
+        } else {
+            $this->totalImageToDisplay = $settings->total_images_to_display; //totalImageToDisplay value get value from database when settings table is not empty 
+            $albums = Album::all();
+            $imgs = Image::orderBy('id', 'DESC')->paginate($this->totalImageToDisplay);
+            return view('welcome')->with('imgs', $imgs)->with('albums', $albums);
         }
     }
 
@@ -580,7 +575,7 @@ class PhotoGallary extends Controller
         $settings = Setting::find($id);
         $settings->project_name = $projectName;
         $settings->email_to_reset_password = $emailToResetPassword;
-        $settings->password_of_email = $passwordOfEmail;
+        $settings->password_of_email = bcrypt($passwordOfEmail);
         $settings->max_uploaded_file_size = $maxFileSize;
         $settings->total_images_to_display = $totalImgDisplay;
 
@@ -621,7 +616,7 @@ class PhotoGallary extends Controller
         $env_update = $this->changeEnv([
             'APP_NAME'   => $settings->project_name,  //'APP_NAME'   => 'PhotoGallary', last value don't use coma (,)
             'MAIL_USERNAME'   => $settings->email_to_reset_password,
-            'MAIL_PASSWORD'   => $settings->password_of_email
+            'MAIL_PASSWORD'   => bcrypt($settings->password_of_email)
         ]);
     }
 

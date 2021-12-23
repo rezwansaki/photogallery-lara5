@@ -83,7 +83,6 @@
                     </div>
                     <!-- End Of Left Side -->
 
-
                     <!-- Right Side -->
                     <div class="col-md-8 col-xs-8">
                         <!-- Profile -->

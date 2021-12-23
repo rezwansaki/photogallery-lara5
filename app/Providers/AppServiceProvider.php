@@ -18,9 +18,9 @@ class AppServiceProvider extends ServiceProvider
         //Bug Fix for Laravel5.4 and Laravel5.5 
         Schema::defaultStringLength(191);
         //when this project will be 'production' mode then it convert http into https
-        // if ($this->app->environment('production')) {
-        //     URL::forceScheme('https');
-        // }
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 
     /**
