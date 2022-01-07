@@ -24,13 +24,16 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="media">
+                <!-- To show uploaded by image -->
                 <div class="media-left">
-                    @if(file_exists( public_path().'/upload/users/'.Auth::user()->name.'.jpg' ))
+                    @if(file_exists( public_path().'/upload/users/'.App\User::find($imageImg->uploaded_by)->name.'.jpg'))
                     <img class="media-object" src="/upload/users/{{App\User::find($imageImg->uploaded_by)->name}}.jpg" alt="{{App\User::find($imageImg->uploaded_by)->name}}.jpg" style="width:60px">
                     @else
                     <img class="media-object" src="/images/imagenotfound.jpg" alt="Image Not Found!" style="width:60px">
                     @endif
                 </div>
+                <!-- /To show uploaded by image -->
+
                 <div class="media-body">
                     <h4 class="media-heading">{{$imageImg->display_name}}</h4>
                     <div class="user">Uploaded By <a href="#">{{App\User::find($imageImg->uploaded_by)->name}}</a></div>
