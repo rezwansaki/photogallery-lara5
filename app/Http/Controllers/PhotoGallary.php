@@ -616,7 +616,8 @@ class PhotoGallary extends Controller
         $env_update = $this->changeEnv([
             'APP_NAME'   => $settings->project_name,  //'APP_NAME'   => 'PhotoGallary', last value don't use coma (,)
             'MAIL_USERNAME'   => $settings->email_to_reset_password,
-            'MAIL_PASSWORD'   => bcrypt($settings->password_of_email)
+            // 'MAIL_PASSWORD'   => bcrypt($settings->password_of_email)
+            'MAIL_PASSWORD'   => $settings->password_of_email
         ]);
     }
 
