@@ -599,9 +599,10 @@ class PhotoGallary extends Controller
         $totalImagesToDisplay = $settings->total_images_to_display;
 
         //check for valid information 
-        if ($projectName == '' || $email == '' || $email == 'Null@Null.com' || $password == '' || $password == 'Null' || $maxUploadedFileSize < 1 || $totalImagesToDisplay < 1) {
-            return redirect('/')->with('messagefail', 'Please, go to the settings and input all valid information with varified email and password. If you are not logged in, please register at the first time and then login for settings page.');
-        }
+        // if ($projectName == '' || $email == '' || $email == 'Null@Null.com' || $password == '' || $password == 'Null' || $maxUploadedFileSize < 1 || $totalImagesToDisplay < 1) {
+        //     return redirect('/')->with('messagefail', 'Please, go to the settings and input all valid information with varified email and password. If you are not logged in, please register at the first time and then login for settings page.');
+        // }
+
     } //end of get notification message from settings 
     /* ================================== End Of Settings ============================================ */
 

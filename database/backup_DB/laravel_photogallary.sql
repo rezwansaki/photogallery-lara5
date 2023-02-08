@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 08, 2023 at 10:04 AM
+-- Generation Time: Feb 08, 2023 at 12:14 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `images` (
 
 INSERT INTO `images` (`id`, `name`, `display_name`, `description`, `size`, `image_views`, `album_id`, `uploaded_date`, `uploaded_by`, `created_at`, `updated_at`) VALUES
 (405, '20221105071114pm_ass8v.jpg', 'Sweet Food', 'sweet food', 117156, 2, 98, '2022-11-05 07:11:14', '14', '2022-11-05 13:58:14', '2023-01-18 11:57:48'),
-(402, '20221105071106pm_ass8v.jpg', 'Sweet Food', 'sweet food', 117156, 2, 98, '2022-11-05 07:11:06', '14', '2022-11-05 13:57:06', '2023-01-18 11:58:02'),
+(402, '20221105071106pm_ass8v.jpg', 'Sweet Food', 'sweet food', 117156, 4, 98, '2022-11-05 07:11:06', '14', '2022-11-05 13:57:06', '2023-02-08 06:11:56'),
 (403, '20221105071123pm_ass9d.jpg', 'Sweet Food', 'sweet food', 196664, 2, 98, '2022-11-05 07:11:23', '14', '2022-11-05 13:57:23', '2023-01-18 11:57:58'),
 (404, '20221105071139pm_ass22s.jpg', 'Sweet Food', 'sweet food', 122860, 4, 98, '2022-11-05 07:11:39', '14', '2022-11-05 13:57:39', '2023-01-18 11:57:54'),
 (401, '20221105071129pm_Harley_Davidson2.jpg', 'Bike', 'bike', 178897, 1, 100, '2022-11-05 07:11:29', '14', '2022-11-05 13:56:29', '2022-11-05 13:56:29'),
@@ -169,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 --
 
 INSERT INTO `settings` (`id`, `project_name`, `email_to_reset_password`, `password_of_email`, `max_uploaded_file_size`, `total_images_to_display`, `created_at`, `updated_at`) VALUES
-(4, 'PhotoGallary', 'info@alinsworld.com', '2XULJ4FocSHfEudf', 900, 20, '2018-05-07 12:01:14', '2022-11-05 14:25:14');
+(4, 'PhotoGallary', '', '', 900, 20, '2018-05-07 12:01:14', '2023-02-08 04:36:01');
 
 -- --------------------------------------------------------
 
@@ -195,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(14, 'rezwansaki', 'info@alinsworld.com', '$2y$10$y7rTrUlkBFgafI2QCQclAeJrmrmplaIy/zbHDhMaYRfNYD7ow7z96', '01WLejuCbHMsNJokxThc12YkS0Q96tRC5kUY4WXsEfNhcSKiYjh6NWjnykS6', '2018-05-07 12:03:59', '2023-02-08 03:38:43');
+(14, 'rezwansaki', 'info@alinsworld.com', '$2y$10$y7rTrUlkBFgafI2QCQclAeJrmrmplaIy/zbHDhMaYRfNYD7ow7z96', 'lgr4BKdoWGrXa3xXwyZ8qCbxAs117jSovzj84gtZtUEOxNgllfaZxYivfT9T', '2018-05-07 12:03:59', '2023-02-08 03:38:43');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
