@@ -11,15 +11,15 @@ you can change the information from settings table.
 ## Instruction:
 
 <ul>
-    <li>1. Creating a Database 'laravel_photoGallary' in your database server and import database from '\database\backup_DB\laravel_photogallary.sql' and then login by using 'Login Information'.</li>
-    <li>2. composer update</li>
-    <li>3. 'npm install' and then 'npm run dev'</li>
-    <!-- <li>4. (no need this step) php artisan storage:link</li> -->
-    <li>4. copy the file .env.sample and rename into .env, then give information by following instruction such as app_url, database, hosting server, mail information.</li>
-    <li>5. create app key by 'php artisan key:gen'</li>
-    <!-- <li>7. (no need this step) php artisan migrate</li> -->
-    <li>6. php artisan serve</li> 
-    <li>7. You can remove all data from database and then register freshly (just login first -> go to 'dashboard' and then click the 'reset' button).</li> 
+    <li>Creating a Database 'laravel_photoGallary' in your database server and import database from '\database\backup_DB\laravel_photogallary.sql' and then login by using 'Login Information'.</li>
+    <li>composer update</li>
+    <li>'npm install' and then 'npm run dev'</li>
+    <!-- <li>(no need this step) php artisan storage:link</li> -->
+    <li>copy the file .env.sample and rename into .env, then give information by following instruction such as app_url, database, hosting server, mail information.</li>
+    <li>create app key by 'php artisan key:gen'</li>
+    <!-- <li>(no need this step) php artisan migrate</li> -->
+    <li>php artisan serve</li> 
+    <li>You can remove all data from database and then register freshly (just login first -> go to 'dashboard' and then click the 'reset' button).</li> 
 </ul>
 
 ## Login Information :
@@ -41,10 +41,12 @@ https://www.alinsworld.com/
 
 ### Used:
 
-Programming Language : Php7
-Framework : Laravel 5.5
-Host : Localhost (Wamp Server)
-Web Page Design : Bootstrap 3.3.7, Html5, CSS3
+<ul>
+ <li>Php : Php7</li>
+ <li>Framework : Laravel 5.5</li>
+ <li>Host : Localhost (Wamp Server)</li>
+ <li>Web Page Design : Bootstrap 3.3.7, Html5, CSS3</li>
+</ul>
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
