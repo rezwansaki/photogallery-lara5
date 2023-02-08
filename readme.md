@@ -14,12 +14,12 @@ you can change the information from settings table.
     <li>1. Creating a Database 'laravel_photoGallary' in your database server and import database from '\database\backup_DB\laravel_photogallary.sql' and then login by using 'Login Information'.</li>
     <li>2. composer update</li>
     <li>3. 'npm install' and then 'npm run dev'</li>
-    <li>4. php artisan storage:link</li>
-    <li>5. copy the file .env.sample and rename into .env, then give information by following instruction such as app_url, database, hosting server, mail information.</li>
-    <li>6. create app key by 'php artisan key:gen'</li>
-    <li>7. (no need this step) php artisan migrate</li>
-    <li>8. php artisan serve</li> 
-    <li>9. You can remove all data from database and then register freshly (just login first -> go to 'dashboard' and then click the 'reset' button).</li> 
+    <!-- <li>4. (no need this step) php artisan storage:link</li> -->
+    <li>4. copy the file .env.sample and rename into .env, then give information by following instruction such as app_url, database, hosting server, mail information.</li>
+    <li>5. create app key by 'php artisan key:gen'</li>
+    <!-- <li>7. (no need this step) php artisan migrate</li> -->
+    <li>6. php artisan serve</li> 
+    <li>7. You can remove all data from database and then register freshly (just login first -> go to 'dashboard' and then click the 'reset' button).</li> 
 </ul>
 
 ## Login Information :
