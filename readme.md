@@ -6,6 +6,8 @@ I don't use migration file. I use MySQL database.
 Database file path: 'photogallary-lara5.5/database/backup_DB/'
 you can change the information from settings table.
 
+![Alt text](Screenshot.jpg "PhotoGallery")
+
 ## Instruction:
 
 <ul>
