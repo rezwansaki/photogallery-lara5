@@ -21,7 +21,7 @@
                             <label for="project_name">Project Name (without space)</label>
                             <input type="text" class="form-control" id="project_name" name="project_name" value="{{ $settings->project_name }}">
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="emailToResetPassword">Email To Reset Password</label>
                             <input type="email" class="form-control" id="projemailToResetPassword" name="emailToResetPassword" value="{{ $settings->email_to_reset_password }}">
                             <br>
@@ -31,7 +31,7 @@
                             <label for="passwordOfEmail">Password of the Email</label>
                             <input type="password" class="form-control" id="passwordOfEmail" name="passwordOfEmail" value="{{ $settings->password_of_email }}">
                         </div>
-                        <p class="alert alert-danger">Password for that email to use for the project not for the user personal use.</p>
+                        <p class="alert alert-danger">Password for that email to use for the project not for the user personal use.</p> --}}
                         <br>
                         <div class="form-group">
                             <label for="maxFileSize">Uploaded File Size Limit in KB</label>
