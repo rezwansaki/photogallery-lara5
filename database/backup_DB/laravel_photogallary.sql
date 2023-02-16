@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 08, 2023 at 12:14 PM
+-- Generation Time: Feb 16, 2023 at 04:12 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `images` (
 --
 
 INSERT INTO `images` (`id`, `name`, `display_name`, `description`, `size`, `image_views`, `album_id`, `uploaded_date`, `uploaded_by`, `created_at`, `updated_at`) VALUES
-(405, '20221105071114pm_ass8v.jpg', 'Sweet Food', 'sweet food', 117156, 2, 98, '2022-11-05 07:11:14', '14', '2022-11-05 13:58:14', '2023-01-18 11:57:48'),
+(405, '20221105071114pm_ass8v.jpg', 'Sweet Food', 'sweet food', 117156, 3, 98, '2022-11-05 07:11:14', '14', '2022-11-05 13:58:14', '2023-02-16 09:51:01'),
 (402, '20221105071106pm_ass8v.jpg', 'Sweet Food', 'sweet food', 117156, 4, 98, '2022-11-05 07:11:06', '14', '2022-11-05 13:57:06', '2023-02-08 06:11:56'),
 (403, '20221105071123pm_ass9d.jpg', 'Sweet Food', 'sweet food', 196664, 2, 98, '2022-11-05 07:11:23', '14', '2022-11-05 13:57:23', '2023-01-18 11:57:58'),
 (404, '20221105071139pm_ass22s.jpg', 'Sweet Food', 'sweet food', 122860, 4, 98, '2022-11-05 07:11:39', '14', '2022-11-05 13:57:39', '2023-01-18 11:57:54'),
@@ -138,13 +138,6 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `password_resets`
---
-
-INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('info@alinsworld.com', '$2y$10$SExFFvy1pe4Tcjjm1RWxjewlV8CzNZWIP19w2ypH9.MxLKiE1e7sa', '2023-02-08 04:03:41');
-
 -- --------------------------------------------------------
 
 --
@@ -195,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(14, 'rezwansaki', 'info@alinsworld.com', '$2y$10$y7rTrUlkBFgafI2QCQclAeJrmrmplaIy/zbHDhMaYRfNYD7ow7z96', 'lgr4BKdoWGrXa3xXwyZ8qCbxAs117jSovzj84gtZtUEOxNgllfaZxYivfT9T', '2018-05-07 12:03:59', '2023-02-08 03:38:43');
+(14, 'rezwansaki', 'info@alinsworld.com', '$2y$10$hnEdkV9P/SU9ArNN/e2GiePsysOdmrkv0Jm4OrJuzJDiu6mTJTgi2', '5BMFecB1jQQzb9TajqgGbbDjjBEDI1vg4fiVSNv4V0DsrPlsFWKJ15xr5hXI', '2018-05-07 12:03:59', '2023-02-16 10:05:19');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
