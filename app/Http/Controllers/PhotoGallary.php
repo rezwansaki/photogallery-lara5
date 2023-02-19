@@ -139,7 +139,9 @@ class PhotoGallary extends Controller
             //album id
             $albumId = Album::select('id')->where('name', $request->album)->get();
 
-            if ($albumId != '') {
+            if ($albumId == '' || strlen($albumId) < 3) {
+                return redirect()->back()->with('messagefail', 'Insert Failed! Please, check all fields.');
+            } else {
                 if ($request->hasFile('file')) {
                     //file store to the destination folder as a new name 
                     $fileExt = $file->getClientOriginalExtension();
@@ -184,8 +186,6 @@ class PhotoGallary extends Controller
                     $img = imgIntervention::make('upload/images/thumb/thumb_' . $fileToSave)->resize(500, 400)->save('upload/images/thumb/thumb_' . $fileToSave, 52);
                     return redirect('/')->with('message', 'Data has been successfully Inserted!');
                 }
-            } else {
-                return redirect()->back()->with('messagefail', 'Insert Failed! Please, check all fields.');
             }
         } //validation 
     } //store images
