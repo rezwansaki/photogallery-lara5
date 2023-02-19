@@ -49,3 +49,6 @@ Route::delete('/admin/reset', 'PhotoGallary@resetApp');
 //admin - settings : such as project name, maximum uploaded file size, email for password reset system 
 Route::get('/admin/showSettings', 'PhotoGallary@showSettings'); //to show the settings blade page 
 Route::post('/admin/doSettings/{id}/update', 'PhotoGallary@doSettings'); //to update data from settings table 
+
+// generate dummy content 
+Route::get('/gendummycontent', 'PhotoGallary@generateDummyContent');

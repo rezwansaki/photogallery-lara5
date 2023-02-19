@@ -19,6 +19,7 @@ class CreateImagesTable extends Migration
             $table->string('display_name');
             $table->string('description');
             $table->integer('size');
+            $table->integer('image_views')->default(1);
             $table->integer('album_id');
             $table->dateTime('uploaded_date');
             $table->string('uploaded_by');

@@ -33,8 +33,6 @@ class PhotoGallary extends Controller
     //index function for welcome page 
     public function index()  //this is for '/' root route which run at the first 
     {
-        $this->showNotifyFromSettings(); //check if information is not correct 
-
         if ($this->totalImageToDisplay == '') {
             $this->totalImageToDisplay = 20;
         }
@@ -45,11 +43,13 @@ class PhotoGallary extends Controller
         {
             $this->setDataForSettings();  //to set default data in settings table 
             $this->totalImageToDisplay = 20; //if settins table is empty then default value for the displaying image 
+            // $this->showNotifyFromSettings(); //check if information is not correct 
             $albums = Album::all();
             $imgs = Image::orderBy('id', 'DESC')->paginate($this->totalImageToDisplay);
             return view('welcome')->with('imgs', $imgs)->with('albums', $albums);
         } else {
             $this->totalImageToDisplay = $settings->total_images_to_display; //totalImageToDisplay value get value from database when settings table is not empty 
+            // $this->showNotifyFromSettings(); //check if information is not correct 
             $albums = Album::all();
             $imgs = Image::orderBy('id', 'DESC')->paginate($this->totalImageToDisplay);
             return view('welcome')->with('imgs', $imgs)->with('albums', $albums);
@@ -136,54 +136,56 @@ class PhotoGallary extends Controller
         if ($validator->fails()) {
             return redirect()->back()->with(['errors' => $validator->errors()->all()]);
         } else {
-            if ($request->hasFile('file')) {
-                //file store to the destination folder as a new name 
-                $fileExt = $file->getClientOriginalExtension();
+            //album id
+            $albumId = Album::select('id')->where('name', $request->album)->get();
 
-                //file store to the destination folder as a new name 
-                $fileName2 = $file->getClientOriginalName(); //get the file name with extension 
+            if ($albumId != '') {
+                if ($request->hasFile('file')) {
+                    //file store to the destination folder as a new name 
+                    $fileExt = $file->getClientOriginalExtension();
 
-                $without_extension = basename($fileName2, '.' . $fileExt); //'index.html' to 'index' 
+                    //file store to the destination folder as a new name 
+                    $fileName2 = $file->getClientOriginalName(); //get the file name with extension 
 
-                //remove '+' and other special sign including space from file name and replace from '_' 
-                $remove = array("+", "^", " ", "%", "=", "*", ",", "|");
-                $fileName = str_replace($remove, "_", $without_extension); //filename without extension 
-                //end of remove '+' and other special sign including space from file name and replace from '_' 
+                    $without_extension = basename($fileName2, '.' . $fileExt); //'index.html' to 'index' 
 
-                $fileName = $fileName . '.' . $fileExt; //if file name length is less then 20 
+                    //remove '+' and other special sign including space from file name and replace from '_' 
+                    $remove = array("+", "^", " ", "%", "=", "*", ",", "|");
+                    $fileName = str_replace($remove, "_", $without_extension); //filename without extension 
+                    //end of remove '+' and other special sign including space from file name and replace from '_' 
 
-                $fileToSave = date("Ymdhmsa") . '_' . $fileName; //actual file name with extension which will be stored 
+                    $fileName = $fileName . '.' . $fileExt; //if file name length is less then 20 
 
+                    $fileToSave = date("Ymdhmsa") . '_' . $fileName; //actual file name with extension which will be stored 
 
-                //album id
-                $albumId = Album::select('id')->where('name', $request->album)->get();
-                foreach ($albumId as $album_Id) {
-                    $selected_Album_Id = $album_Id->id;
+                    foreach ($albumId as $album_Id) {
+                        $selected_Album_Id = $album_Id->id;
+                    }
+
+                    //store all data in Post model 
+                    $dataSave = new Image;
+
+                    $dataSave->name = $fileToSave;
+                    $dataSave->image_views = 1; //count single image views and default value is 1 
+                    $dataSave->display_name = $request->display_name;
+                    $dataSave->description = $request->description;
+                    $dataSave->size = $file->getClientSize(); //file size in bytes 
+                    $dataSave->album_id = $selected_Album_Id;
+                    $dataSave->uploaded_date = date('Y-m-d h:m:s');
+                    $dataSave->uploaded_by = $request->uploaded_by;
+
+                    $dataSave->save(); //data will be saved in database 
+
+                    //if data save successfully then file will be uploaded 
+                    $file->storeAs('/images', $fileToSave);
+                    $file->storeAs('/images/thumb', 'thumb_' . $fileToSave);
+
+                    //to make a thumbnail image 
+                    $img = imgIntervention::make('upload/images/thumb/thumb_' . $fileToSave)->resize(500, 400)->save('upload/images/thumb/thumb_' . $fileToSave, 52);
+                    return redirect('/')->with('message', 'Data has been successfully Inserted!');
                 }
-
-                //store all data in Post model 
-                $dataSave = new Image;
-
-                $dataSave->name = $fileToSave;
-                $dataSave->image_views = 1; //count single image views and default value is 1 
-                $dataSave->display_name = $request->display_name;
-                $dataSave->description = $request->description;
-                $dataSave->size = $file->getClientSize(); //file size in bytes 
-                $dataSave->album_id = $selected_Album_Id;
-                $dataSave->uploaded_date = date('Y-m-d h:m:s');
-                $dataSave->uploaded_by = $request->uploaded_by;
-
-                $dataSave->save(); //data will be saved in database 
-
-                //if data save successfully then file will be uploaded 
-                $file->storeAs('/images', $fileToSave);
-                $file->storeAs('/images/thumb', 'thumb_' . $fileToSave);
-
-                //to make a thumbnail image 
-                $img = imgIntervention::make('upload/images/thumb/thumb_' . $fileToSave)->resize(500, 400)->save('upload/images/thumb/thumb_' . $fileToSave, 52);
-                return redirect('/')->with('message', 'Data has been successfully Inserted!');
             } else {
-                return redirect()->back()->with('messagefail', 'Data has not been Inserted! Please, select an image which is not more than 900 KB and must be jpg or jpeg');
+                return redirect()->back()->with('messagefail', 'Insert Failed! Please, check all fields.');
             }
         } //validation 
     } //store images
@@ -586,26 +588,6 @@ class PhotoGallary extends Controller
         return redirect('/');
     }
 
-    //get notification message from settings 
-    public function showNotifyFromSettings()
-    {
-
-        $settings = Setting::all()->first();
-
-        $projectName = $settings->project_name;
-        $email = $settings->email_to_reset_password;
-        $password = $settings->password_of_email;
-        $maxUploadedFileSize = $settings->max_uploaded_file_size;
-        $totalImagesToDisplay = $settings->total_images_to_display;
-
-        //check for valid information 
-        // if ($projectName == '' || $email == '' || $email == 'Null@Null.com' || $password == '' || $password == 'Null' || $maxUploadedFileSize < 1 || $totalImagesToDisplay < 1) {
-        //     return redirect('/')->with('messagefail', 'Please, go to the settings and input all valid information with varified email and password. If you are not logged in, please register at the first time and then login for settings page.');
-        // }
-
-    } //end of get notification message from settings 
-    /* ================================== End Of Settings ============================================ */
-
 
     /* =============================================================================================== */
     /* Changing Value of Environment .env file */
@@ -668,5 +650,17 @@ class PhotoGallary extends Controller
     }
     /* =============================================================================================== */
     /* End of Changing Value of Environment .env file */
+    /* =============================================================================================== */
+
+
+    /* =============================================================================================== */
+    // Generating dummy content 
+    /* =============================================================================================== */
+    public function generateDummyContent()
+    {
+        return 'Hello';
+    }
+    /* =============================================================================================== */
+    /* End of Generatring dummy content */
     /* =============================================================================================== */
 }

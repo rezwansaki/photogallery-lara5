@@ -15,11 +15,11 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('project_name');
-            $table->string('email_to_reset_password');
-            $table->string('password_of_email');
-            $table->integer('max_uploaded_file_size');
-            $table->integer('total_images_to_display');
+            $table->string('project_name')->default('PhotoGallary');
+            $table->string('email_to_reset_password')->default('example@example.com');
+            $table->string('password_of_email')->default('yourpassword');
+            $table->integer('max_uploaded_file_size')->default('900');
+            $table->integer('total_images_to_display')->default('20');
             $table->timestamps();
         });
     }
